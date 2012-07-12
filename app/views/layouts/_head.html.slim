@@ -1,0 +1,35 @@
+/ head.html.slim
+
+/ Charset
+meta charset='utf-8'
+
+/ DNS Prefetch
+/   (via http://html5boilerplate.com/docs/DNS-Prefetching/)
+/   Google CDN (jQuery)
+link rel="dns-prefetch" href="//ajax.googleapis.com"
+/   Google Analytics
+link rel="dns-prefetch" href="//www.google-analytics.com"
+link rel="dns-prefetch" href="//google-analytics.com"
+/   Github
+link rel="dns-prefetch" href="//github.com"
+link rel="dns-prefetch" href="https://github.com"
+/   Twitter
+link rel="dns-prefetch" href="https://twitter.com"
+
+
+/ title and description
+title StartingPoint
+'
+meta name='description' content='The very next major Web Startup you definitely should know about.'
+meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'
+meta name='viewport' content='width=device-width'
+
+/ stylesheets
+= stylesheet_link_tag 'application'
+
+/ javascripts in head
+/   jquery in body
+= javascript_include_tag 'application_head'
+
+/ csrf meta tags
+= csrf_meta_tags
