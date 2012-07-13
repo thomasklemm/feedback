@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706101341) do
+ActiveRecord::Schema.define(:version => 20120713045110) do
 
-  create_table "tests", :force => true do |t|
+  create_table "channels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "messages", :force => true do |t|
+    t.string   "name"
+    t.string   "message"
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "messages", ["channel_id"], :name => "index_messages_on_channel_id"
 
 end
