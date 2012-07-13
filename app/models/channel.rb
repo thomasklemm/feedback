@@ -17,6 +17,9 @@ class Channel < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :scoped], scope: :institution
 
+  # Validations
+  validates :name, uniqueness: { scope: :institution_id }
+
   # Whitelist
   attr_accessible :name, :full_name, :description
 
