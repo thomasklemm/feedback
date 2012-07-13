@@ -1,4 +1,10 @@
-h1 Channel#index
-p Find me in app/views/channel/index.html.slim
+markdown:
+  ## Feedback
+  Attention, Students! Give instant feadback to your professors with feedback.app!
 
-= debug @channels
+/ List Channels
+ul
+  - @channels.each do |channel| 
+    / Channel
+    li.channel
+      = link_to channel.name, channel

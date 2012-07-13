@@ -1,6 +1,13 @@
-h1 Channel#show
-p Find me in app/views/channel/show.html.slim
+markdown:
+  ### Channel "#{ @channel.name }"
 
-= debug @channel
+/ Messages
+- @messages.each do |message|
+  p.message 
+    ' "#{ message.message }"
+    - if message.name.present?
+      ' by #{ message.name } 
+    ' (#{ distance_of_time_in_words_to_now(message.created_at) } ago)
 
-= debug @messages
+/ Send new message
+= link_to 'Send a new message', new_message_path

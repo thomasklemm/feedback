@@ -1,10 +1,10 @@
 Knight::Application.routes.draw do
 
-  get ':id' => 'channels#show'
+  get ':id/read' => 'channels#show', as: :channel
 
-  get ':id/new_message' => 'channels#new_message'
+  get ':id' => 'channels#new_message', as: :new_message
 
-  post ':id' => 'channels#create_message'
+  post ':id' => 'channels#create_message', as: :create_message
   
   # Static Pages via Thoughtbot's High Voltage
   match ':id' => 'pages#show', as: :static, via: :get

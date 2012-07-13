@@ -5,8 +5,8 @@
 //= require jquery_ujs
 
 # Foundation
-//= require foundation/jquery.reveal
 //= require foundation/jquery.customforms
 //= require foundation/jquery.placeholder.min
+//= require foundation/jquery.reveal
 //= require foundation/jquery.tooltips
-//= require foundation/foundation
+//= require foundation/app

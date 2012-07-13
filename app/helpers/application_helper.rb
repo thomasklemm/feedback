@@ -10,4 +10,12 @@ module ApplicationHelper
     klass
   end
 
+  def error_class(obj, attribute)
+    obj.errors[attribute].present? ? 'error': ''
+  end
+
+  def error_field(obj, attribute)
+    obj.errors[attribute].present? ? "<small>#{ obj.errors.full_messages.join(', ') }</small>".html_safe : ""
+  end
+
 end
