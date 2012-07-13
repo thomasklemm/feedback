@@ -4,7 +4,6 @@ class Institution < ActiveRecord::Base
 
   # Institution:
   #   name: Subdomain, base for FriendlyId scopes
-  #   slug: FriendlyId Slugged Name
   #   full_name: Full, human readable Name
   #   description: Institution-specific text
 
@@ -15,6 +14,9 @@ class Institution < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name
 
+  # Validations
+  validates :name, uniqueness: true
+
   # Protect all attributes
-  attr_accessible
+  attr_accessible :description
 end

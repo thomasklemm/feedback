@@ -18,5 +18,6 @@ class Channel < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :scoped], scope: :institution
 
   # Whitelist
-  attr_readonly :name
+  attr_accessible :name, :full_name, :description
+
 end
