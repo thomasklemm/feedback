@@ -4,3 +4,16 @@ markdown:
 
 / New Message Form
 = form_for @message, url: create_message_path(@channel)  do |f|
+
+  / Message
+  .five.columns class=error_class(@message, :message)
+    = f.label :message, class: 'error'
+    = f.text_area :message, style: 'height: 10rem;'
+    = error_field(@message, :message)
+
+  / Name
+  = f.label :name, class: 'error'
+  = f.text_field :name
+
+  / Submit
+  = f.button 'Submit', class: 'button'
