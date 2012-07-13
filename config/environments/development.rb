@@ -40,4 +40,5 @@ Knight::Application.configure do
 
   # Quiet Assets (Mute asset pipeline log messages)
   config.quiet_assets = true
+
 end

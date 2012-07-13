@@ -1,0 +1,10 @@
+markdown:
+  ## Feedback
+  Attention, Students! Give instant feadback to your professors with feedback.app!
+
+/ List Channels
+ul
+  - @channels.each do |channel| 
+    / Channel
+    li.channel
+      = link_to channel.name, channel

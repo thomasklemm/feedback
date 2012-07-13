@@ -1,8 +1,6 @@
 /* Requires
    globals.css */
 
-  @import "base";
-
 /* Standard Forms ---------------------- */
 
   form { margin: 0 0 ($formSpacing * $ratio); }
@@ -18,27 +16,30 @@
 
   label { font-size: ms(0); color: lighten($black, 30%); cursor: pointer; display: block; font-weight: 500; margin-bottom: 3px;
 
-    &.right { float: none; text-align: right; padding-top: ($formSpacing / 2); }
+    &.right { float: none; text-align: right; }
+    &.inline { line-height: (ms(0) + ($formSpacing * 1.5)); margin: 0 0 $formSpacing 0; }
   }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     label.right { text-align: left; }
   }
 
-  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: 32px; line-height: 31px; }
+  .prefix, .postfix { display: block; position: relative; z-index: 2; text-align: center; width: 100%; padding-top: 0; padding-bottom: 0; height: (ms(0) + ($formSpacing * 1.5)); line-height: (ms(0) + ($formSpacing * 1.5)) - 1; }
   a.button.prefix, a.button.postfix { padding-left: 0; padding-right: 0; text-align: center; }
   span.prefix, span.postfix { background: darken($white, 5%); border: 1px solid darken($white, 20%); }
 
   .prefix { left: 2px; @include border-corner-radius(top, left, 2px); @include border-corner-radius(bottom, left, 2px); }
   .postfix { right: 2px; @include border-corner-radius(top, right, 2px); @include border-corner-radius(bottom, right, 2px); }
 
-  input[type="text"], textarea { border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea { border: 1px solid darken($white, 20%); @include border-radius(2px); @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1)); color: rgba(0,0,0,0.75); display: block; font-size: ms(0); margin: 0 0 $formSpacing 0; padding: ($formSpacing / 2); height: (ms(0) + ($formSpacing * 1.5)); width: 100%; @include transition(all 0.15s linear);
 
     &.oversize { @include font-size(18, true); }
 
     &:focus { background: darken($white, 2%); outline: none !important; border-color: darken($white, 30%); }
     &[disabled] { background-color: #ddd; }
   }
+
+  textarea { height: auto; }
 
   select { width: 100%; }
 
@@ -48,15 +49,12 @@
     legend { font-weight: bold; background: $white; padding: 0 3px; margin: 0 0 0 -3px; }
   }
 
-  /* Inlined Radio & Checkbox */
-  .form-field input[type=radio], div.form-field input[type=checkbox] { display: inline; width: auto; margin-bottom: 0; }
-
   /* Errors */
-  .form-field.error input, input.input-text.alert { border-color: $alertColor; background-color: rgba(255,0,0,0.15); }
-  .form-field.error label, label.alert { color: $alertColor; }
-  .form-field.error small, small.error { padding: 6px 4px; border: solid 0 #C00000; border-width: 0 1px 1px 1px; margin-top: -10px; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-top-left-radius(2px); @include box-sizing(border-box); }
+  .error input, input.error, .error textarea, textarea.error { border-color: $alertColor; background-color: rgba($alertColor, 0.1); }
+  .error label, label.error { color: $alertColor; }
+  .error small, small.error { display: block; padding: 6px 4px; margin-top: -($formSpacing) - 1; margin-bottom: $formSpacing; background: $alertColor; color: #fff; @include font-size(12); font-weight: bold; @include border-bottom-left-radius(2px); @include border-bottom-right-radius(2px); }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     @for $i from 1 through $totalColumns {
       input[type="text"].#{convert-number-to-word($i)}, textarea.#{convert-number-to-word($i)} { width: 100% !important; }
     }
@@ -81,7 +79,7 @@
     }
     div.custom.dropdown { display: block; position: relative; width: auto; height: 28px; margin-bottom: 9px; margin-top: 2px;
 
-      a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; word-wrap: nowrap; }
+      a.current { display: block; width: auto; line-height: 26px; min-height: 28px; padding: 0 38px 0 6px; border: solid 1px #ddd; color: #141414; background-color: #fff; white-space: nowrap; }
       a.selector { position: absolute; width: 27px; height: 28px; display: block; right: 0; top: 0; border: solid 1px #ddd;
         &:after { content: ""; display: block; @include cssTriangle(5px, #aaa, top); position: absolute; left: 50%; top: 50%; margin-top: -2px; margin-left: -5px;  }
       }

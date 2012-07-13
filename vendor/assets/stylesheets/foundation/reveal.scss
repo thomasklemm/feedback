@@ -4,8 +4,6 @@
  * http://www.opensource.org/licenses/mit-license.php
  */
 
-  @import "base";
-
 /* Reveal Modals ---------------------- */
 
   .reveal-modal-bg { position: fixed; height: 100%; width: 100%; background: #000; background: rgba(#000, .45); z-index: 40; display: none; top: 0; left: 0; }
@@ -20,7 +18,7 @@
       top: 8px;
       right: 11px;
       color: #aaa;
-      text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+      text-shadow: 0 -1px 1px rgba(0,0,0,.6);
       font-weight: bold;
       cursor: pointer;
     }
@@ -32,7 +30,7 @@
   }
 
   /* Mobile */
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .reveal-modal-bg { position: absolute; }
 
     .reveal-modal,
@@ -52,18 +50,3 @@
    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
    <a class="close-reveal-modal">&#215;</a>
   </div> */
-
-
-  /* This is for all IE specfific style less than IE9. We hate IE. */
-  .lt-ie8 .row { max-width: 1000px; }
-
-  div.panel { border: 1px solid #ccc; }
-  .lt-ie8 .nav-bar li.has-flyout a { padding-right: 20px; }
-  .lt-ie8 .nav-bar li.has-flyout a:after { border-top: none; }
-
-  /* Correct IE7 button padding */
-  .lt-ie8 input[type=submit].nice.button { filter:chroma(color=#000000); position: relative; top: -2px; }
-  .lt-ie8 input[type=submit].tiny.button    { padding: 5px 5px 7px; }
-  .lt-ie8 input[type=submit].small.button   { padding: 8px 7px 9px; }
-  .lt-ie8 input[type=submit].medium.button  { padding: 9px 13px 9px; }
-  .lt-ie8 input[type=submit].large.button   { padding: 9px 18px 10px; }

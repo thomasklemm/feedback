@@ -1,0 +1,55 @@
+/ channel/show.html.slim
+
+.new_message_button = link_to 'New Message', new_message_path, class: 'button'
+
+markdown:
+  #### Welcome, @#{ @channel.name }.
+
+  Here is what your students are wondering.
+
+
+
+/ Messages
+#messages
+  = render partial: 'shared/message', collection: @messages
+
+/ No live data yet
+div.no_live_data_yet: em No live data yet
+div style='height: 1.6rem'
+
+/ Show existing messages
+= link_to 'Show existing messages', '', class: 'show_existing_messages'
+div style='height: 1.6rem'
+
+/ Send new message
+div: b = link_to 'New Message', new_message_path
+div style='height: 0.4rem'
+
+/ All Channels
+div = link_to 'All Channels', root_path
+
+/ Pusher Integration
+javascript:
+
+  // Initialize
+  var pusher = new Pusher('38bf35a8c429326ad783');
+  var channel = pusher.subscribe('#{ @channel.name }');
+
+  // Bind Events
+  channel.bind('new_message', function(data) {
+    $('.no_live_data_yet').hide();
+    $('#messages').prepend(data).slideDown();
+  });
+
+  // Hide existing messages on load
+  $('.message').hide();
+
+  // Show all existing messages
+  $('.show_existing_messages').click(function(e){
+    e.preventDefault();
+    $('.message').show();
+    $(this).hide();
+  });
+
+
+
