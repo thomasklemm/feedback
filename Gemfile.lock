@@ -51,6 +51,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    friendly_id (4.0.7)
     fssm (0.2.9)
     high_voltage (1.1.1)
     hike (1.2.1)
@@ -163,6 +164,7 @@ DEPENDENCIES
   bourbon (~> 2.1.0)
   coffee-rails
   compass-rails
+  friendly_id (~> 4.0.1)
   high_voltage
   jquery-rails
   letter_opener

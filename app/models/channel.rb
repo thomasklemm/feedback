@@ -15,7 +15,7 @@ class Channel < ActiveRecord::Base
 
   # ID
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :scoped], scope: :institution
 
   # Whitelist
   attr_readonly :name
