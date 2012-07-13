@@ -57,6 +57,9 @@ gem 'redcarpet'
 # New Relic (Server Monitoring)
 gem 'newrelic_rpm', group: :production
 
+# Fortastic (Form Builder)
+gem 'formtastic'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

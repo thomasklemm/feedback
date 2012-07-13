@@ -51,6 +51,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
     fssm (0.2.9)
     high_voltage (1.1.1)
     hike (1.2.1)
@@ -159,6 +161,7 @@ DEPENDENCIES
   bourbon (~> 2.1.0)
   coffee-rails
   compass-rails
+  formtastic
   high_voltage
   jquery-rails
   letter_opener
