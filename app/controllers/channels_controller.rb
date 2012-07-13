@@ -17,8 +17,10 @@ class ChannelsController < ApplicationController
   def create_message
     @message = @channel.messages.new(params[:message])
     if @message.save
-      flash[:notice] = 'Success.'
-      redirect_to @channel
+      flash[:notice] = 'Message delivered.'
+      html_message = render_to_string(partial: 'shared/message', locals: {message: @message})
+      Pusher[@channel.name].trigger('new_message', html_message)
+      redirect_to action: :new_message
     else
       render action: :new_message
     end
