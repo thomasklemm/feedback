@@ -1,18 +1,16 @@
 Knight::Application.routes.draw do
 
-  get "channel/index"
+  get ':id' => 'channels#show'
 
-  get "channel/show"
+  get ':id/new_message' => 'channels#new_message'
 
-  get "channel/new_message"
-
-  get "channel/create_message"
-
+  post ':id' => 'channels#create_message'
+  
   # Static Pages via Thoughtbot's High Voltage
   match ':id' => 'pages#show', as: :static, via: :get
 
   # Root
-  root to: 'welcome#index'
+  root to: 'channels#index'
 
   # Link to your Static Pages
   #   anywhere in tue views using the link_to helper

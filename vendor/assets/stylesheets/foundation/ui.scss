@@ -21,57 +21,71 @@
 
 */
 
-  @import "base";
-
   /* Visibility Classes ---------------------- */
 
-  /* Standard visibility targeting */
+  /* Standard (large) display targeting */
   .show-for-small,
   .show-for-medium,
+  .show-for-medium-down,
   .hide-for-large,
+  .hide-for-large-up,
   .show-for-xlarge { display: none !important; }
 
   .hide-for-xlarge,
   .show-for-large,
+  .show-for-large-up,
   .hide-for-small,
-  .hide-for-medium { display: block !important; }
+  .hide-for-medium,
+  .hide-for-medium-down { display: block !important; }
 
   /* Very large display targeting */
-  @media #{$mediaXlarge} {
+  @media only screen and (min-width: $screenXlarge) {
     .hide-for-small,
     .hide-for-medium,
+    .hide-for-medium-down,
     .hide-for-large,
+    .show-for-large-up,
     .show-for-xlarge { display: block !important; }
 
     .show-for-small,
     .show-for-medium,
+    .show-for-medium-down,
     .show-for-large,
+    .hide-for-large-up,
     .hide-for-xlarge { display: none !important; }
   }
 
   /* Medium display targeting */
-  @media #{$mediaMedium} {
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
     .hide-for-small,
     .show-for-medium,
+    .show-for-medium-down,
     .hide-for-large,
+    .hide-for-large-up,
     .hide-for-xlarge { display: block !important; }
 
     .show-for-small,
     .hide-for-medium,
+    .hide-for-medium-down,
     .show-for-large,
+    .show-for-large-up,
     .show-for-xlarge { display: none !important; }
   }
 
   /* Small display targeting */
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .show-for-small,
+    .show-for-medium-down,
     .hide-for-medium,
     .hide-for-large,
+    .hide-for-large-up,
     .hide-for-xlarge { display: block !important; }
 
     .hide-for-small,
     .show-for-medium,
+    .show-for-medium-down,
     .show-for-large,
+    .show-for-large-up,
     .show-for-xlarge { display: none !important; }
   }
 
@@ -81,14 +95,14 @@
   .hide-for-landscape,
   .show-for-portrait { display: none !important; }
 
-  @media #{$mediaLandscape} {
+  @media screen and (orientation: landscape) {
     .show-for-landscape,
     .hide-for-portrait { display: block !important; }
     .hide-for-landscape,
     .show-for-portrait { display: none !important; }
   }
 
-  @media #{$mediaPortrait} {
+  @media screen and (orientation: portrait) {
     .show-for-portrait,
     .hide-for-landscape { display: block !important; }
     .hide-for-portrait,
@@ -108,14 +122,14 @@
   table.hide-for-small,
   table.hide-for-medium { display: table !important; }
 
-  @media #{$mediaMedium} {
+  @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) {
     .touch table.hide-for-xlarge,
     .touch table.hide-for-large,
     .touch table.hide-for-small,
     .touch table.show-for-medium { display: table !important; }
   }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     table.hide-for-xlarge,
     table.hide-for-large,
     table.hide-for-medium,
@@ -124,14 +138,14 @@
 
   /* Alerts ---------------------- */
 
-  div.alert-box { display: block; padding: 8px 9px 9px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
+  div.alert-box { display: block; padding: 6px 7px 7px; font-weight: bold; font-size: ms(0); color: $white; background-color: $mainColor; border: 1px solid rgba(#000,.1); margin-bottom: 12px; @include border-radius(3px); text-shadow: 0 -1px rgba(#000,.3); position: relative;
 
     &.success { background-color: $successColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.alert { background-color: $alertColor; color: #fff; text-shadow: 0 -1px rgba(#000,.3); }
     &.secondary { background-color: $secondaryColor; color: darken($secondaryColor, 60%); text-shadow: 0 1px rgba(#fff,.3); }
 
-    a.close { color: #333; position: absolute; right: 4px; top: -2px; font-size: ms(2); opacity: 0.3; padding: 4px; }
-    a.close:hover, a.close:focus { opacity: 0.5; }
+    a.close { color: #333; position: absolute; right: 4px; top: -1px; font-size: ms(1); opacity: 0.2; padding: 4px; }
+    a.close:hover, a.close:focus { opacity: 0.4; }
 
   }
 
@@ -176,7 +190,7 @@
 
   .tap-to-close { display: block; @include font-size(10); color: #888; font-weight: normal; }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     .tooltip {
       @include font-size(14);
       line-height: 1.4;
@@ -228,7 +242,8 @@
     dt, dd { float: left; display: inline; margin-left: 9px; margin-bottom: 4px; }
     dt { color: #999; font-weight: normal; }
     dd a { text-decoration: none; @include border-radius(1000px); }
-    dd.active a { font-weight: bold; background: $mainColor; color: #fff; padding: 4px 10px 5px; cursor: default; }
+    dd.active a { font-weight: bold; background: $mainColor; color: #fff; padding: 3px 9px; cursor: default; }
+
   }
 
   /* Pagination ---------------------- */
@@ -291,7 +306,7 @@
 
   /* Keytroke Characters ---------------------- */
 
-  .keystroke { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
+  .keystroke, kbd { font-family: "Consolas", "Menlo", "Courier", monospace; font-size: ms(0) - 1; padding: 2px 4px 0px; margin: 0; background: darken($white, 7%); border: solid 1px darken($white, 14%); @include border-radius($buttonRadius); }
 
 
   /* Video - Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ ---------------------- */
@@ -307,11 +322,11 @@
     &.widescreen { padding-bottom: 57.25%; }
     &.vimeo { padding-top: 0; }
 
-    iframe, object, embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    iframe, object, embed, video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
   }
 
-  @media #{$mediaAll} {
+  @media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
     .flex-video { padding-top: 0; }
   }
 

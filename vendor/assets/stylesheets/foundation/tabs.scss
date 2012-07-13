@@ -2,8 +2,6 @@
    globals.css
    app.js */
 
-  @import "base";
-
 /* Tabs ---------------------- */
 
   dl.tabs { border-bottom: solid 1px darken($white, 10%); display: block; height: $tabHeight; padding: 0; margin-bottom: 20px;
@@ -16,7 +14,7 @@
     dd { display: block; float: left; padding: 0; margin: 0;
       a { color: lighten($txtColor, 30%); display: block; font-size: ms(0); height: $tabHeight; line-height: $tabHeight; padding: 0px ms(1) * 1.4; }
       &.active { border-top: 3px solid $mainColor; margin-top: -3px;
-        a { cursor: pointer; color: lighten($txtColor, 10%); background: #fff; border-left: 1px solid darken($white, 10%); border-right: 1px solid darken($white, 10%); font-weight: bold; }
+        a { cursor: default; color: lighten($txtColor, 10%); background: #fff; border-left: 1px solid darken($white, 10%); border-right: 1px solid darken($white, 10%); font-weight: bold; }
       }
       &:first-child { margin-left: 0; }
     }
@@ -28,7 +26,7 @@
         a { background: darken($white, 5%); border: none; border: 1px solid darken($white, 10%); border-width: 1px 1px 0 0; color: #555; display: block; font-size: ms(0); height: auto; line-height: 1; padding: 15px 20px; @include box-shadow(0 1px 0 $shinyEdge inset);
         }
         &.active { margin-top: 0; border-top: 1px solid lighten($black, 30%); border-left: 4px solid lighten($black, 10%);
-          a { background: $tabBackground; border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; @include box-shadow(0 0 0); }
+          a { background: lighten($black, 30%); border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; @include box-shadow(0 0 0); }
         }
         &:first-child a.active { margin: 0; }
       }
@@ -67,7 +65,7 @@
 
   .no-js ul.tabs-content>li { display: block; }
 
-  @media #{$mediaSmall} {
+  @media only screen and (max-width: $screenSmall - 1) {
     dl.tabs.mobile, dl.nice.tabs.mobile { width: auto; margin: 20px -20px 40px; height: auto; }
     dl.tabs.mobile dt, dl.tabs.mobile dd, dl.nice.tabs.mobile dt, dl.nice.tabs.mobile dd { float: none; height: auto; }
 
