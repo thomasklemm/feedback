@@ -41,7 +41,4 @@ Knight::Application.configure do
   # Quiet Assets (Mute asset pipeline log messages)
   config.quiet_assets = true
 
-  # Nicely formatted Sass Output
-  config.sass.style = :nested
-
 end

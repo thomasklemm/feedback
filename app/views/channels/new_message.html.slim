@@ -1,19 +1,22 @@
-markdown:
-  ### Channel "#{ @channel.name }"
-  Send a new message.
 
-/ New Message Form
-= form_for @message, url: create_message_path(@channel)  do |f|
+.five.columns
+  markdown:
+    ##### Send a message to #{ link_to '@' + @channel.name, @channel }.
 
-  / Message
-  .five.columns class=error_class(@message, :message)
-    = f.label :message, class: 'error'
-    = f.text_area :message, style: 'height: 10rem;'
-    = error_field(@message, :message)
+    Do it. Now!
 
-  / Name
-  = f.label :name, class: 'error'
-  = f.text_field :name
+  / New Message Form
+  = form_for @message, url: create_message_path(@channel)  do |f|
 
-  / Submit
-  = f.button 'Submit', class: 'button'
+    / Message
+    = f.label :message, 'Message <abbr title="required">*</abbr>'.html_safe
+    = f.text_area :message, style: 'height: 10rem;', autofocus: true
+
+    / Name
+    = f.label :name
+    = f.text_field :name
+
+    / Submit
+    = f.button 'Submit', class: 'button'
+    ' &nbsp;&nbsp;or
+    = link_to 'Cancel', @channel

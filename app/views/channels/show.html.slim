@@ -1,13 +1,26 @@
 markdown:
-  ### Channel "#{ @channel.name }"
+  #### Welcome, @#{ @channel.name }.
+
+  Here is what your students are wondering.
+
+  ---
 
 / Messages
-- @messages.each do |message|
-  p.message 
-    ' "#{ message.message }"
-    - if message.name.present?
-      ' by #{ message.name } 
-    ' (#{ distance_of_time_in_words_to_now(message.created_at) } ago)
+.six.columns style='margin-bottom: 2rem'
+  - @messages.each do |message|
+    .message class='panel'
+      span.message_text = message.message
+      - if message.name.present?
+        span.label.message_name by #{ message.name }
+      span.message_time #{ distance_of_time_in_words_to_now(message.updated_at).gsub('about', '') } ago
+
+
+markdown:
+  ---
 
 / Send new message
-= link_to 'Send a new message', new_message_path
+b = link_to 'New Message', new_message_path
+div style='margin-bottom: 0.4rem'
+
+/ All Channels
+div = link_to 'All Channels', root_path
