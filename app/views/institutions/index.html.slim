@@ -1,0 +1,11 @@
+markdown:
+  ### Backfeed.Herokuapp.com
+
+  Making it easy for professors to get feedback from their students. Made for big classes.
+
+  These institutions already use Backfeed:
+
+- @institutions.each do |i|
+  .institution
+    = link_to root_url(subdomain: i.name) do
+      h5.name = i.full_name || i.name

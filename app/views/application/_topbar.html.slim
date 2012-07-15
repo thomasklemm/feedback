@@ -1,5 +1,10 @@
 / topbar.html.slim
 
+/ home
+- link_target = (params[:controller].to_sym == :channels && params[:action].to_sym == :index) ? root_url(subdomain: false) : channels_path
+b.home = link_to 'Backfeed', link_target
+span &nbsp;&nbsp;&nbsp;
+
 / happy day
 b.happyday
   /! Heavily influenced and inspired by 37signals. Thanks guys for your great work!

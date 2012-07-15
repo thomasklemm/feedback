@@ -1,9 +1,10 @@
 class ChannelsController < ApplicationController
 
-  before_filter :find_channel, except: :index
+  before_filter :load_institution, only: :index
+  before_filter :load_channel, except: [:institution_index, :index]
 
   def index
-    @channels = Channel.all
+    @channels = @institution.channels
   end
 
   def show
@@ -28,8 +29,13 @@ class ChannelsController < ApplicationController
 
 protected
 
-  def find_channel
-    @channel = Channel.find(params[:id])
+  def load_institution
+    @institution = Institution.find(request.subdomain) unless request.subdomain == 'www'
+  end
+
+  def load_channel
+    load_institution
+    @channel = @institution.find(params[:id])
   end
 
 end
