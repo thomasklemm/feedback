@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: channels
+#
+#  created_at     :datetime         not null
+#  description    :text
+#  full_name      :string(255)
+#  id             :integer          not null, primary key
+#  institution_id :integer
+#  name           :string(255)
+#  slug           :string(255)
+#  updated_at     :datetime         not null
+#
+
 class Channel < ActiveRecord::Base
     
   # A Channel belongs to an Institution
