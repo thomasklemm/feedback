@@ -1,17 +1,34 @@
 Knight::Application.routes.draw do
 
+  # feedback.de / www.feedback.de -> institutions#index
+  #   -> Marketing & List of all Universities I signed up
+  #
+  # uni-bamberg.feedback.de / uni-koeln.feedback.de -> channels#index
+  #   --> University Homepage & List of all Channels to send a message to
+  #
+  # uni-bamberg.feedback.de/ivens -> channels#new_message
+  #   --> Send a message to channel ivens at the uni-bamberg institution
+  #
+  # uni-bamberg.feedback.de/ivens/show
+  #   --> Show the messages that are being sent to this channel in real-time
+  #        & make existing messages available 
+
   # Channels
-  get ':id/show' => 'channels#show', as: :channel
-  get ':id' => 'channels#new_message', as: :new_message
-  post ':id' => 'channels#create_message', as: :create_message
-  
+  # REVIEW: better subdomain constraints
+  constraints subdomain: /uni-bamberg|uni-koeln/ do
+    match '/'       => 'channels#index',            as: :channels
+    get ':id'       => 'channels#new_message',      as: :new_message
+    post ':id'      => 'channels#create_message',   as: :create_message
+    get ':id/show'  => 'channels#show',             as: :channel
+  end
+
   # Static Pages via Thoughtbot's High Voltage
   match ':id' => 'pages#show', as: :static, via: :get
 
-  match '/' => 'channels#index', as: :channels, constraints: { subdomain: /uni-koeln|uni-bamberg/ }
-
-  # Root
-  root to: 'institutions#index', as: :institutions
+  # Institutions
+  # root_url and institutions_url both work
+  match '/' => 'institutions#index', as: :institutions
+  root to: 'institutions#index'
 
   # Link to your Static Pages
   #   anywhere in tue views using the link_to helper

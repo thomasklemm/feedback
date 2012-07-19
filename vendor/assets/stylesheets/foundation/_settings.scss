@@ -22,7 +22,7 @@ $darkEdge: rgba(#000, .2) !default;
 
 // Button Settings
 
-$buttonRadius: 3px !default;
+$buttonRadius: 5px !default;
 $btnBase: 10px !default;
 
 $tinyBtnBase: $btnBase - 5 !default;
@@ -50,8 +50,8 @@ $complementaryWidth: 20% !default;
 // Modular Scale Settings
 
 $ratio: $golden !default;
-$base-size: 14px 44px !default;
-// Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
+$base-size: 15px 48px !default;
+// 14px 44px Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 

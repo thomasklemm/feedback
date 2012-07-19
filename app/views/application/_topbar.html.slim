@@ -1,15 +1,26 @@
 / topbar.html.slim
 
 / home
+/ if user is on channels#index direct him to root_utl, else redirect him to channels_path
 - link_target = (params[:controller].to_sym == :channels && params[:action].to_sym == :index) ? root_url(subdomain: false) : channels_path
-b.home = link_to 'Backfeed', link_target
-span &nbsp;&nbsp;&nbsp;
+.right = link_to 'Home', link_target, class: 'button radius secondary'
+
+/ institution name or feedback slogan
+-  if @institution
+  b = @institution.full_name
+- else
+  b 
+    ' Wie können Sie Ihren Studenten helfen? 
+    = link_to 'Mehr erfahren &raquo;'.html_safe, static_path(id: :features)
+
 
 / happy day
-b.happyday
+/ b.happyday
   /! Heavily influenced and inspired by 37signals. Thanks guys for your great work!
   coffee:
     dayNames = new Array("Sunday","Monday","Tuesday","Wednesday", "Thursday","Friday","Saturday")
     now = new Date()
     document.write("Happy " + dayNames[now.getDay()] + ".")
+
+
 
