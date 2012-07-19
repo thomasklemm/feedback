@@ -2,6 +2,7 @@
 
 # jQuery and jQuery UJS
 #   insert jQuery-Tag before that (served externally by default)
+//= require jquery-ui
 //= require jquery_ujs
 
 # Foundation

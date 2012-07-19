@@ -1,7 +1,6 @@
 / message.html.slim
 
-.message class='panel'
-  span.message_text = message.message
-  - if message.name.present?
-    span.label.message_name by #{ message.name }
-  span.message_time #{ distance_of_time_in_words_to_now(message.updated_at).gsub('about', '') } ago
+.message
+  div.text: b = message.message
+  span.name #{ message.name.present? ? message.name : '<em>Student/in</em>'.html_safe }
+  span.time.right #{distance_of_time_in_words_to_now(message.updated_at)}

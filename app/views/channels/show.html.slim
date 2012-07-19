@@ -1,32 +1,22 @@
 / channel/show.html.slim
 
-.new_message_button = link_to 'New Message', new_message_path, class: 'button'
+/ Institution
+= render 'institutions/institution_header'
 
-markdown:
-  #### Welcome, @#{ @channel.name }.
-
-  Here is what your students are wondering.
-
-
+h6 Nachrichten an #{ @channel.full_name }
 
 / Messages
 #messages
   = render partial: 'shared/message', collection: @messages
 
 / No live data yet
-div.no_live_data_yet: em No live data yet
-div style='height: 1.6rem'
+p.no_live_data_yet: em Bisher keine neuen Nachrichten eingegangen.
 
 / Show existing messages
-= link_to 'Show existing messages', '', class: 'show_existing_messages'
-div style='height: 1.6rem'
+p: b = link_to 'Alle Nachrichten anzeigen', '', class: 'show_existing_messages'
 
 / Send new message
-div: b = link_to 'New Message', new_message_path
-div style='height: 0.4rem'
-
-/ All Channels
-div = link_to 'All Channels', root_path
+/ p: b = link_to 'Neue Nachricht', new_message_path(@channel)
 
 / Pusher Integration
 javascript:
@@ -39,6 +29,8 @@ javascript:
   channel.bind('new_message', function(data) {
     $('.no_live_data_yet').hide();
     $('#messages').prepend(data).slideDown();
+    // Highlight Message + Fade Highlighting Color Away
+    $('#messages').children('.message').first().css({'background-color': '#ffff99'}).animate({'background-color': '#fff'}, 120000);
   });
 
   // Hide existing messages on load
@@ -48,6 +40,7 @@ javascript:
   $('.show_existing_messages').click(function(e){
     e.preventDefault();
     $('.message').show();
+    $('.no_live_data_yet').hide();
     $(this).hide();
   });
 
