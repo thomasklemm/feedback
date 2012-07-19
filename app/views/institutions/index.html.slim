@@ -1,11 +1,14 @@
-markdown:
-  ### Backfeed.Herokuapp.com
+h2 Feedback
+h4.subheader Die einfachste Art, im vollen Hörsaal <br> Fragen zu klären.
 
-  Making it easy for professors to get feedback from their students. Made for big classes.
+p Mit Feedback wird es für Sie als Dozenten einfach, immer zu wissen, was Ihre Studenten gerade verstehen und wo sie gerne nachfragen würden.
 
-  These institutions already use Backfeed:
+p = link_to 'Mehr erfahren &raquo;'.html_safe, static_path(id: :features), class: 'alert button'  
+
+p Diese renommierte Hochschulen nutzen Feedback bereits um ihre Lehre noch weiter zu verbessern:
 
 - @institutions.each do |i|
-  .institution
-    = link_to root_url(subdomain: i.name) do
-      h5.name = i.full_name || i.name
+  = link_to root_url(subdomain: i.name), class: 'institution' do
+    .panel
+      = image_tag("i/#{ i.name }/logo.png", style: 'max-height: 100px; max-width: 100px; vertical-align: middle', class: 'logo')
+      b.name = i.full_name || i.name

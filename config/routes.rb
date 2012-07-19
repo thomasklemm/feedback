@@ -15,7 +15,7 @@ Knight::Application.routes.draw do
 
   # Channels
   # REVIEW: better subdomain constraints
-  constraints subdomain: /uni-bamberg|uni-koeln/ do
+  constraints subdomain: /uni-bamberg|uni-koeln|uni-augsburg/ do
     match '/'       => 'channels#index',            as: :channels
     get ':id'       => 'channels#new_message',      as: :new_message
     post ':id'      => 'channels#create_message',   as: :create_message

@@ -1,10 +1,22 @@
-markdown:
-  ## Feedback
-  Attention, Students! Give instant feadback to your professors with feedback.app!
+/ channels/index.html.slim
 
-/ List Channels
-ul
-  - @channels.each do |channel| 
-    / Channel
-    li.channel
-      = link_to channel.name, channel
+/ Institution
+= link_to root_url(subdomain: @institution.name), class: 'institution' do
+  .panel
+    = image_tag("i/#{ @institution.name }/logo.png", style: 'max-height: 100px; max-width: 100px; vertical-align: middle', class: 'logo')
+    b.name = @institution.full_name || @institution.name
+
+h5 Liebe Studenten!
+
+p Über Feedback können Professoren live Ihre Stimme empfangen. Sagen Sie Ihnen, wo der Schuh drückt, und unsere Lehre wird auch in Zukunft immer besser werden.
+
+.panel
+  p Diese Professoren an der #{ @institution.full_name } <br /> freuen sich über Ihr Feedback:
+
+  / Channels Listing
+  ul.disc
+    - @channels.each do |c|
+      // Channel
+      - display_name = c.full_name || c.name
+      li.channel
+        = link_to display_name, new_message_path(c)

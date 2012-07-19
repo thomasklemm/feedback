@@ -3,7 +3,7 @@
 / home
 / if user is on channels#index direct him to root_utl, else redirect him to channels_path
 - link_target = (params[:controller].to_sym == :channels && params[:action].to_sym == :index) ? root_url(subdomain: false) : channels_path
-.right = link_to 'Home', link_target, class: 'button radius secondary'
+/ .right = link_to 'Home', link_target, class: 'button radius secondary'
 
 / institution name or feedback slogan
 -  if @institution
