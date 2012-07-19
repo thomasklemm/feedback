@@ -1,22 +1,22 @@
 / new_message.html.slim
 
-markdown:
-  ##### Send a message to #{ link_to '@' + @channel.name, @channel }.
+/ Institution
+= render 'institutions/institution_header'
 
-  Do it. Now!
+p: b Ihre Nachricht an #{ @channel.full_name }:
 
 / New Message Form
 = form_for @message, url: create_message_path(@channel)  do |f|
 
   / Message
-  = f.label :message, 'Message <abbr title="required">*</abbr>'.html_safe
+  = f.label :message, 'Nachricht <abbr title="benötigt">*</abbr>'.html_safe
   = f.text_area :message, style: 'height: 10rem;', autofocus: true, autocomplete: :off
 
   / Name
-  = f.label :name
+  = f.label :name, 'Ihr Name'
   = f.text_field :name, autocomplete: :off
 
   / Submit
-  = f.button 'Submit', class: 'button'
-  ' &nbsp;&nbsp;or
-  = link_to 'Cancel', @channel
+  = f.button 'Senden', class: 'button radius', style: 'margin-right: 1rem'
+  ' oder
+  = link_to "zurück", channels_path

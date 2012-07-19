@@ -18,11 +18,12 @@ class ChannelsController < ApplicationController
   def create_message
     @message = @channel.messages.new(params[:message])
     if @message.save
-      flash[:notice] = 'Message delivered.'
+      flash[:notice] = "Ihre Nachricht wurde erfolgreich gesendet. Vielen Dank!"
       html_message = render_to_string(partial: 'shared/message', locals: {message: @message})
       Pusher[@channel.name].trigger('new_message', html_message)
       redirect_to action: :new_message
     else
+      flash.now.notice = "Bitte geben Sie eine Nachricht ein."
       render action: :new_message
     end
   end
@@ -35,7 +36,7 @@ protected
 
   def load_channel
     load_institution
-    @channel = @institution.find(params[:id])
+    @channel = @institution.channels.find(params[:id])
   end
 
 end

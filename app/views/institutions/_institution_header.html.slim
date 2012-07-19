@@ -1,0 +1,7 @@
+/ _institution_header.html.slim
+
+/ Institution
+= link_to root_url(subdomain: @institution.name), class: 'institution' do
+  .panel
+    = image_tag("i/#{ @institution.name }/logo.png", style: 'max-height: 100px; max-width: 100px; vertical-align: middle', class: 'logo')
+    b.name = @institution.full_name || @institution.name
